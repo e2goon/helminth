@@ -5,12 +5,19 @@ import ReactDOM from "react-dom";
 
 import App from "./App";
 
+interface Opts {
+  container: string;
+  props: object;
+}
+
+const defaults: Opts = {
+  container: ".helminth",
+  props: {}
+};
+
 export class Helminth {
-  constructor(opts) {
-    const defaults = {
-      container: "",
-      props: {}
-    };
+  private opts: Opts;
+  constructor(opts: Opts) {
     this.opts = Object.assign(defaults, opts);
   }
   render() {

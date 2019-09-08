@@ -2,16 +2,23 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: {
     libraryTarget: "this",
     filename: "bundle.js",
     path: path.resolve(__dirname, "build/")
   },
   module: {
-    rules: [{ test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }]
+    rules: [
+      {
+        test: /\.(tsx?)|(js)$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      }
+    ]
   },
   resolve: {
+    extensions: [".ts", ".tsx", ".js"],
     alias: {
       "@": path.resolve(__dirname, "src/")
     }
