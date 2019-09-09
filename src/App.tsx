@@ -1,11 +1,12 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement } from 'react'
+import Button from '@/components/Button'
 
 function App(): ReactElement {
   return (
     <>
-      <button>Toggle</button>
+      <Button>Toggle</Button>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
