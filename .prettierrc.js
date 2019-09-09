@@ -1,4 +1,5 @@
 module.exports = {
   parser: 'typescript',
-  singleQuote: true
-};
+  singleQuote: true,
+  semi: false
+}
