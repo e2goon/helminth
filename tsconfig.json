@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "module": "commonjs",
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "esModuleInterop": true,
     "sourceMap": true,
-    "jsx": "react"
+    "jsx": "react",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   }
 }
