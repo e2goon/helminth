@@ -1,9 +1,9 @@
-import "core-js";
+import 'core-js';
 
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import App from "./App";
+import App from './App';
 
 interface Opts {
   container: string;
@@ -11,7 +11,7 @@ interface Opts {
 }
 
 const defaults: Opts = {
-  container: ".helminth",
+  container: '.helminth',
   props: {}
 };
 
