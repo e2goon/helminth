@@ -2,7 +2,6 @@ import 'core-js'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ContentfulClientApi } from 'contentful'
 
 import Contentful, { createContentfulClient } from '@/context/contentful'
 import App from '@/App'
