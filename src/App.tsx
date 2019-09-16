@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import Container from '@/components/Container'
 import Button from '@/components/Button'
+import { useContentful } from '@/context/contentful'
 
 function App(): ReactElement {
   const [isContainer, toggleContainer] = useState(false)

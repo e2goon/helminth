@@ -3,8 +3,8 @@ import 'core-js'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Contentful, { createContentfulClient } from '@/context/contentful'
 import App from '@/App'
+import { contentfulClient, ContentfulProvider } from '@/context/contentful'
 
 interface Opts {
   container: string
@@ -19,7 +19,7 @@ export class Helminth {
       container: '.helminth',
       props: {}
     }
-    this.client = createContentfulClient({
+    this.client = contentfulClient({
       space: 'ueof42gwmyfh',
       accessToken: 'XEBRS-gPFt6kEKixUDGSctLAkjoRuUNu6YjkTAHnFHI',
       host: 'localhost:8080'
@@ -28,9 +28,9 @@ export class Helminth {
   }
   render() {
     ReactDOM.render(
-      <Contentful.Provider value={this.client}>
+      <ContentfulProvider value={this.client}>
         <App {...this.opts.props} />
-      </Contentful.Provider>,
+      </ContentfulProvider>,
       document.querySelector(this.opts.container)
     )
   }
