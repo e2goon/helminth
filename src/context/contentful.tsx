@@ -1,4 +1,10 @@
-import React, { createContext, useContext, ReactNode } from 'react'
+import React, {
+  createContext,
+  useContext,
+  ReactElement,
+  ReactNode
+} from 'react'
+
 import {
   createClient,
   CreateClientParams,
@@ -17,7 +23,7 @@ export function ContentfulProvider({
 }: {
   value: ContentfulClientApi
   children: ReactNode
-}) {
+}): ReactElement {
   return (
     <ContentfulContext.Provider value={value}>
       {children}
@@ -25,6 +31,6 @@ export function ContentfulProvider({
   )
 }
 
-export function useContentful() {
+export function useContentful(): ContentfulClientApi {
   return useContext(ContentfulContext)
 }
