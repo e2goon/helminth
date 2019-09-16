@@ -21,8 +21,7 @@ export class Helminth {
     }
     this.client = contentfulClient({
       space: 'ueof42gwmyfh',
-      accessToken: 'XEBRS-gPFt6kEKixUDGSctLAkjoRuUNu6YjkTAHnFHI',
-      host: 'localhost:8080'
+      accessToken: '_4E9FBxzMbTB74ed6FQWCgNzZFvzUyOOePtAgXorVkI'
     })
     this.opts = Object.assign(defaults, opts)
   }

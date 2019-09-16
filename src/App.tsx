@@ -1,4 +1,4 @@
-import React, { useState, ReactElement } from 'react'
+import React, { useState, useEffect, ReactElement } from 'react'
 import styled from 'styled-components'
 
 import Container from '@/components/Container'
@@ -7,9 +7,20 @@ import { useContentful } from '@/context/contentful'
 
 function App(): ReactElement {
   const [isContainer, toggleContainer] = useState(false)
+  const [games, setGames] = useState([])
+  const client = useContentful()
   const handleClick = () => {
     toggleContainer(!isContainer)
   }
+  useEffect(() => {
+    client
+      .getEntries({
+        content_type: 'game'
+      })
+      .then(entries => {
+        setGames(entries.items)
+      })
+  }, [])
   return (
     <>
       <Fixed right bottom>
@@ -17,7 +28,10 @@ function App(): ReactElement {
           Toggle
         </Button>
       </Fixed>
-      <Container isOpen={isContainer}>hi</Container>
+      <Container isOpen={isContainer}>
+        {isContainer &&
+          games.map((game, i) => <div key={i}>{game.fields.title}</div>)}
+      </Container>
     </>
   )
 }
