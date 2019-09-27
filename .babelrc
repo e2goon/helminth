@@ -9,5 +9,13 @@
     ],
     "@babel/typescript",
     "@babel/react"
+  ],
+  "plugins": [
+    [
+      "@babel/transform-runtime",
+      {
+        "corejs": 3
+      }
+    ]
   ]
 }
