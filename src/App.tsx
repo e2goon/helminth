@@ -12,10 +12,12 @@ function App(): ReactElement {
     toggleContainer(!isContainer)
   }
   useEffect(() => {
-    (async () => {
-      const snapshot = await db().collection('games').get()
-      console.log(snapshot.docs)
-    })()
+    db()
+      .collection('games')
+      .get()
+      .then(snapshot => {
+        console.log(snapshot)
+      })
   }, [])
   return (
     <>
