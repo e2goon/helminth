@@ -1,9 +1,13 @@
 import React, { ReactElement, ReactNode } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 interface Props {
   children: ReactNode
   isOpen: boolean
+}
+
+interface IContainer {
+  isOpen?: boolean
 }
 
 function Container({ isOpen, children }: Props): ReactElement {
@@ -12,26 +16,23 @@ function Container({ isOpen, children }: Props): ReactElement {
 
 export default Container
 
-interface IContainer {
-  isOpen?: boolean
-}
-
-const StyledContainer = styled('div')<IContainer>(
-  {
-    position: 'fixed',
-    top: '10px',
-    left: '10px',
-    bottom: '10px',
-    width: '300px',
-    border: '1px solid red',
-    opacity: 0,
-    transform: 'translateX(-100%)',
-    transition: 'transform 0.3s',
-    backgroundColor: '#fff'
-  },
-  props => ({
-    borderColor: props.isOpen && 'blue',
-    transform: props.isOpen && 'translateX(0)',
-    opacity: props.isOpen && 1
-  })
-)
+const StyledContainer = styled.div<IContainer>`
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  bottom: 20px;
+  width: 400px;
+  background-color: #efefef;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translate(0, 10px) scale(0.99);
+  transition: all 0.4s;
+  ${props =>
+    props.isOpen &&
+    css`
+      opacity: 1;
+      transform: translate(0, 0) scale(1);
+    `}
+`

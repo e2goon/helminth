@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import Container from '@/components/Container'
 import Button from '@/components/Button'
-import { db } from '@/services/firebase'
+import { firestore } from '@/services/firebase'
 
 function App(): ReactElement {
   const [isContainer, toggleContainer] = useState(false)
@@ -12,11 +12,14 @@ function App(): ReactElement {
     toggleContainer(!isContainer)
   }
   useEffect(() => {
-    db()
+    firestore()
       .collection('games')
       .get()
       .then(snapshot => {
-        console.log(snapshot)
+        snapshot.forEach(doc => {
+          games.push(doc.data())
+          setGames(games)
+        })
       })
   }, [])
   return (
@@ -27,8 +30,10 @@ function App(): ReactElement {
         </Button>
       </Fixed>
       <Container isOpen={isContainer}>
-        {isContainer &&
-          games.map((game, i) => <div key={i}>{game.fields.title}</div>)}
+        <h2>Helminth</h2>
+        <ul>
+          {isContainer && games.map((game, i) => <li key={i}>{game.name}</li>)}
+        </ul>
       </Container>
     </>
   )
@@ -43,7 +48,8 @@ interface IFixed {
 
 const Fixed = styled('div')<IFixed>(
   {
-    position: 'fixed'
+    position: 'fixed',
+    zIndex: 1
   },
   props => ({
     right: props.right && '20px',
