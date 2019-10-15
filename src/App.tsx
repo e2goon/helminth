@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import Container from '@/components/Container'
 import Button from '@/components/Button'
+import { Row } from '@/components/Grid'
 import { CardList } from '@/components/Card'
 import { firestore } from '@/services/firebase'
 
@@ -32,7 +33,9 @@ function App(): ReactElement {
         </Button>
       </Fixed>
       <Container isOpen={isContainer}>
-        <CardList data={games} />
+        <Row>
+          <CardList data={games} />
+        </Row>
       </Container>
     </>
   )
