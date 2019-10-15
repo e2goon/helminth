@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import Container from '@/components/Container'
 import Button from '@/components/Button'
+import { CardList } from '@/components/Card'
 import { firestore } from '@/services/firebase'
 
 function App(): ReactElement {
@@ -14,6 +15,7 @@ function App(): ReactElement {
   useEffect(() => {
     firestore()
       .collection('games')
+      .limit(5)
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {
@@ -30,10 +32,7 @@ function App(): ReactElement {
         </Button>
       </Fixed>
       <Container isOpen={isContainer}>
-        <h2>Helminth</h2>
-        <ul>
-          {isContainer && games.map((game, i) => <li key={i}>{game.name}</li>)}
-        </ul>
+        <CardList data={games} />
       </Container>
     </>
   )
