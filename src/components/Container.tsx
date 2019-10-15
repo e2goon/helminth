@@ -21,11 +21,11 @@ const StyledContainer = styled.div<IContainer>`
   top: 20px;
   right: 20px;
   bottom: 20px;
-  width: 400px;
-  background-color: #efefef;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  background-color: #f5f5f5;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #000;
+  border-radius: 4px;
   opacity: 0;
   transform: translate(0, 10px) scale(0.99);
   transition: all 0.4s;
