@@ -2,8 +2,8 @@ import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 
 const config = {
-  apiKey: 'AIzaSyAq3iddFYAd_QzHpgu1J9v4RPTKJEQEtIU',
-  projectId: 'helminth-fd0cf'
+  apiKey: process.env.FIREBASE_API_KEY,
+  projectId: process.env.FIREBASE_PROJECT_ID
 }
 
 if (!firebase.apps.length) {
